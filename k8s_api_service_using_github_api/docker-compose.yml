@@ -1,0 +1,10 @@
+services:
+  helm-inspector:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITHUB_REPO=${GITHUB_REPO:-itaigoldman/dynamic_environments_demo}
+      - HELM_ROOT=${HELM_ROOT:-helm_repo}
+    restart: unless-stopped
