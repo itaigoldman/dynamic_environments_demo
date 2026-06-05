@@ -16,6 +16,12 @@ spec:
         - name: nginx
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: service
+              valueFrom:
+                configMapKeyRef:
+                  name: my-service
+                  key: service
           ports:
             - containerPort: 80
           volumeMounts:
